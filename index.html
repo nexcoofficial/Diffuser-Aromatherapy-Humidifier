@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diffuser Aromatherapy Humidifier - Solusi Aromaterapi Premium</title>
+    <meta name="description" content="Diffuser Aromatherapy Humidifier dengan teknologi canggih untuk relaksasi dan kualitas udara yang lebih baik. Harga spesial Rp 175.000 dari Rp 299.000.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #4b0082;
+            --primary-medium: #663399;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.9) 0%, rgba(102, 51, 153, 0.8) 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .price-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-gold);
+            color: var(--white);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .star-rating {
+            color: #ffd700;
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .social-proof {
+            position: fixed;
+            top: 20px;
+            right: -400px;
+            width: 350px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 999;
+            transition: right 0.5s ease;
+            border-left: 4px solid var(--primary-medium);
+        }
+        
+        .social-proof.show {
+            right: 20px;
+        }
+        
+        .variant-thumbnail {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .variant-thumbnail:hover, .variant-thumbnail.active {
+            border-color: var(--accent-gold);
+            transform: scale(1.05);
+        }
+        
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 900;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .sticky-cta.show {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .social-proof {
+                width: 90%;
+                right: -100%;
+            }
+            
+            .social-proof.show {
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Social Proof Notification -->
+    <div class="social-proof" id="socialProof">
+        <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                <img src="https://i.pinimg.com/736x/7c/ae/2d/7cae2d608533ea53a87954bdddaf87db.jpg" alt="Customer" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <p class="font-semibold text-sm" id="socialProofText">Vina dari Jakarta baru saja memesan Diffuser Aromatherapy Humidifier</p>
+                <p class="text-xs text-gray-500" id="socialProofTime">1 menit yang lalu</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://cdn.orderonline.id/uploads/images_7520641753639169702.png" alt="Logo Toko" class="h-10">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="text-gray-700 hover:text-purple-800 font-medium">Fitur</a>
+                <a href="#gallery" class="text-gray-700 hover:text-purple-800 font-medium">Galeri</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-purple-800 font-medium">Testimoni</a>
+                <a href="#order" class="text-gray-700 hover:text-purple-800 font-medium">Pesan Sekarang</a>
+            </nav>
+            <button class="md:hidden text-gray-700" id="mobileMenuButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div class="md:hidden hidden bg-white py-2 px-4 shadow-md" id="mobileMenu">
+            <a href="#features" class="block py-2 text-gray-700 hover:text-purple-800">Fitur</a>
+            <a href="#gallery" class="block py-2 text-gray-700 hover:text-purple-800">Galeri</a>
+            <a href="#testimonials" class="block py-2 text-gray-700 hover:text-purple-800">Testimoni</a>
+            <a href="#order" class="block py-2 text-gray-700 hover:text-purple-800">Pesan Sekarang</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/a7d0a46b661a4b60b2060d98d2474d32~tplv-o3syd03w52-resize-webp:800:800.webp?dr=15592" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Diffuser Aromatherapy Humidifier</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Relaksasi sempurna dengan aromaterapi berkualitas tinggi dan kelembaban udara yang optimal</p>
+            <div class="mb-8">
+                <span class="text-3xl md:text-4xl font-bold text-gold-500 line-through opacity-70 mr-4">Rp 299.000</span>
+                <span class="text-4xl md:text-5xl font-bold text-white">Rp 175.000</span>
+            </div>
+            <a href="#order" class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transform transition hover:scale-105">
+                PESAN SEKARANG
+            </a>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span>Garansi 1 Tahun</span>
+                </div>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span>100% Original</span>
+                </div>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                        <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1v-1a1 1 0 011-1h2a1 1 0 011 1v1a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1V5a1 1 0 00-1-1H3z" />
+                    </svg>
+                    <span>Gratis Ongkir</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fitur Unggulan Diffuser Kami</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Nikmati pengalaman aromaterapi premium dengan teknologi canggih</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pengatur Waktu</h3>
+                    <p class="text-gray-600">4 pengaturan waktu (1/2/3 jam) atau mode continuous hingga 8 jam</p>
+                </div>
+                
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Alat Bantu Tidur</h3>
+                    <p class="text-gray-600">Membantu relaksasi dan tidur lebih nyenyak dengan aroma terapi</p>
+                </div>
+                
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Operasi Senyap</h3>
+                    <p class="text-gray-600">Hanya 25dB, sangat senyap sehingga tidak mengganggu tidur Anda</p>
+                </div>
+                
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">7 Warna LED</h3>
+                    <p class="text-gray-600">Pilihan 7 warna LED yang bisa disesuaikan dengan suasana hati Anda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galeri Produk</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat keindahan dan kualitas Diffuser Aromatherapy Humidifier kami</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/0eccbab8f7f04625816868aa249fc016~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/0eccbab8f7f04625816868aa249fc016~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/525c8299bcb046adb8756d83939a625f~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/525c8299bcb046adb8756d83939a625f~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/56e2f2caf3cc4ff08b69f2690ce47ca9~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/56e2f2caf3cc4ff08b69f2690ce47ca9~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c030fd8562834c76b01da1cba37a6cdc~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c030fd8562834c76b01da1cba37a6cdc~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/4a905349a8404f35ae2ce42a3d4d2efc~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/4a905349a8404f35ae2ce42a3d4d2efc~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/6270910b5e594783916acb0b157ccd6a~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/6270910b5e594783916acb0b157ccd6a~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/e63369eee546413bb7df1828bbc1be58~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/e63369eee546413bb7df1828bbc1be58~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+                <div class="cursor-pointer" onclick="openLightbox('https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/2ccf7bede51d47fabb950a430b97c732~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584')">
+                    <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/2ccf7bede51d47fabb950a430b97c732~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15584" alt="Diffuser Aromatherapy Humidifier" class="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition">
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#order" class="inline-block bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transform transition hover:scale-105">
+                    PESAN SEKARANG - Rp 175.000
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Apa Kata Pelanggan Kami?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ribuan pelanggan telah merasakan manfaat Diffuser Aromatherapy Humidifier</p>
+            </div>
+            
+            <div class="relative">
+                <div class="testimonial-carousel overflow-hidden">
+                    <div class="flex transition-transform duration-300 ease-in-out" id="testimonialTrack">
+                        <!-- Testimonial 1 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="testimonial-card bg-gray-50 rounded-xl p-6 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                        <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/25253138f63154f09742184a66370090~tplv-tiktokx-cropcenter:100:100.jpg?dr=14579&refresh_token=272cccda&x-expires=1755622800&x-signature=wk0v5W%2FB2o0MJP7y9%2BsWLgKh7jQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=5f8d3399&idc=my2" alt="Desi H." class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Desi H.</h4>
+                                        <div class="star-rating flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">"Barang sesuai deskripsi, kualitas bagus, diffuser kecil tapi elegan. Wanginya enak banget."</p>
+                                <div class="cursor-pointer" onclick="openLightbox('https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-cac588-sg/ochlAzk3eFyIYEFGvGUQC8cCUSrFDvfqeexDEu~tplv-noop.image?t=9276707c&x-expires=1755538196&x-signature=2qpdRzjxnXIVfqIpP5wEkwDOvj0%3D')">
+                                    <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-cac588-sg/ochlAzk3eFyIYEFGvGUQC8cCUSrFDvfqeexDEu~tplv-noop.image?t=9276707c&x-expires=1755538196&x-signature=2qpdRzjxnXIVfqIpP5wEkwDOvj0%3D" alt="Testimoni Desi H." class="w-20 h-20 rounded object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="testimonial-card bg-gray-50 rounded-xl p-6 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                        <img src="https://p16-common-sign-useastred.tiktokcdn-eu.com/tos-useast2a-avt-0068-euttp/7e5ef794cd02b6b59d17a7c67089fc02~tplv-tiktokx-cropcenter:100:100.jpg?dr=14579&refresh_token=fae9662d&x-expires=1755622800&x-signature=YKiiRwNPsj%2BvymFTwFKaNdMUtEw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=5f8d3399&idc=my2" alt="Intan Z." class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Intan Z.</h4>
+                                        <div class="star-rating flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">"Diffuser berfungsi dengan baik, mudah dipakai, essential oil-nya wangi tahan lama."</p>
+                                <div class="cursor-pointer" onclick="openLightbox('https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-cac588-sg/oE2DFB3mHKynYwm4IAoZEfcYQeHMoQxugBixg6~tplv-noop.image?t=9276707c&x-expires=1755538194&x-signature=LRVl0HSm3%2F3gkWYIfLKmLO%2Byl8M%3D')">
+                                    <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-cac588-sg/oE2DFB3mHKynYwm4IAoZEfcYQeHMoQxugBixg6~tplv-noop.image?t=9276707c&x-expires=1755538194&x-signature=LRVl0HSm3%2F3gkWYIfLKmLO%2Byl8M%3D" alt="Testimoni Intan Z." class="w-20 h-20 rounded object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="testimonial-card bg-gray-50 rounded-xl p-6 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                        <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/5bf15a88c0a6d59209f015d5d0f20b0f~tplv-tiktokx-cropcenter:100:100.jpg?dr=14579&refresh_token=afcd4644&x-expires=1755622800&x-signature=xylZ34DYQZT0GIrkWdJ7ng1eT4U%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=5f8d3399&idc=my2" alt="Aulia P." class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Aulia P.</h4>
+                                        <div class="star-rating flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">"Produk datang cepat, desain minimalis dan lucu. Cocok dipakai di kamar"</p>
+                                <div class="cursor-pointer" onclick="openLightbox('https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-cac588-sg/o85dQdDJ4IgEnfedEoAtQ7I8enrpWFGAFGYGeL~tplv-noop.image?t=9276707c&x-expires=1755538197&x-signature=a7v3lvj2ZAePGGh5zkPLqMn1DaY%3D')">
+                                    <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-cac588-sg/o85dQdDJ4IgEnfedEoAtQ7I8enrpWFGAFGYGeL~tplv-noop.image?t=9276707c&x-expires=1755538197&x-signature=a7v3lvj2ZAePGGh5zkPLqMn1DaY%3D" alt="Testimoni Aulia P." class="w-20 h-20 rounded object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md ml-2 z-10" id="prevTestimonial">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md mr-2 z-10" id="nextTestimonial">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="flex justify-center mt-6 space-x-2" id="testimonialDots">
+                <button class="w-3 h-3 rounded-full bg-purple-300" data-index="0"></button>
+                <button class="w-3 h-3 rounded-full bg-purple-100" data-index="1"></button>
+                <button class="w-3 h-3 rounded-full bg-purple-100" data-index="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variant Selection -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Pilihan Varian Aroma</h2>
+                <p class="text-lg text-gray-600">Pilih varian essential oil favorit Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                <div class="variant-thumbnail active" data-variant="bluebell" onclick="selectVariant(this, 'bluebell')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0m-mczsnjo0t2jbf2.webp" alt="Diffuser + Bluebell" class="w-full h-auto rounded-lg">
+                    <p class="text-center mt-2 font-medium">Bluebell</p>
+                </div>
+                <div class="variant-thumbnail" data-variant="hilton" onclick="selectVariant(this, 'hilton')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0g-mczsnjo0uh3rdb@resize_w450_nl.webp" alt="Diffuser + Hilton" class="w-full h-auto rounded-lg">
+                    <p class="text-center mt-2 font-medium">Hilton</p>
+                </div>
+                <div class="variant-thumbnail" data-variant="shangri" onclick="selectVariant(this, 'shangri')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0l-mczsnjo0vvo7ab@resize_w450_nl.webp" alt="Diffuser + Shangri" class="w-full h-auto rounded-lg">
+                    <p class="text-center mt-2 font-medium">Shangri</p>
+                </div>
+                <div class="variant-thumbnail" data-variant="lavender" onclick="selectVariant(this, 'lavender')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0s-mczsnjo0xa8n33@resize_w450_nl.webp" alt="Diffuser + Lavender" class="w-full h-auto rounded-lg">
+                    <p class="text-center mt-2 font-medium">Lavender</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-16 bg-gradient-to-b from-purple-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 bg-purple-800 text-white">
+                        <h2 class="text-3xl font-bold mb-4">Diffuser Aromatherapy Humidifier</h2>
+                        <div class="flex items-center mb-6">
+                            <span class="text-2xl line-through opacity-70 mr-4">Rp 299.000</span>
+                            <span class="text-3xl font-bold">Rp 175.000</span>
+                            <div class="price-badge">
+                                <span>41%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold mb-2">Fitur Utama:</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Pengatur waktu 1/2/3 jam atau continuous
+                                </li>
+                                <li class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Operasi senyap (hanya 25dB)
+                                </li>
+                                <li class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    7 warna LED yang bisa disesuaikan
+                                </li>
+                                <li class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Kapasitas air 300ml
+                                </li>
+                                <li class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Garansi 1 tahun
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span class="ml-1">4.9/5 (1.234 ulasan)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="ml-1">Pengiriman 1-3 hari</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Form Pemesanan</h3>
+                        
+                        <!-- OrderOnline Embed Code -->
+                        <div class="ooef">
+                            <form class="orderonline-embed-form" data-username="mila" data-product-slug="diffuser-aromatherapy-humidifier" data-product-id="68a2130dff94f6ca440e3c57" id="oo-embed-form-diffuser-aromatherapy-humidifier-8179" data-origin="orderonline">
+                                <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform:
+</body>
+</html>
